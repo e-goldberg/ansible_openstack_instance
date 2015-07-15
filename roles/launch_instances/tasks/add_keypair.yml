@@ -2,7 +2,7 @@
 
 # add keypair to keystone
 
-- name: add keypair {{ KEY_NAME }} for {{ INST_NAME }} to openstack
+- name: add keypair for an instance to openstack
   nova_keypair: state=present login_username={{ OS_USERNAME }} login_password={{ OS_PASSWORD }} login_tenant_name={{ OS_TENANT_NAME }} auth_url={{ OS_AUTH_URL }} name={{ KEY_NAME }}
   register: key
 
