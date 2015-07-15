@@ -10,23 +10,23 @@ Uses os_server module from Ansible 2
 	yum install gcc gcc-devel libffi-devel python-devel openssl-devel libxml-devel libxslt-devel
 	pip install shade
 ##install ansible from git
-yum install git
-git clone git://github.com/ansible/ansible.git --recursive
+	yum install git
+	git clone git://github.com/ansible/ansible.git --recursive
 ##set ansible environment to run - every time when logging in
-cd ansible/
-source hacking/env-setup
+	cd ansible/
+	source hacking/env-setup
 ##setup ssh keys - for localhost
-ssh-keygen -t rsa
-cat ~/.ssh/id_rsa.pub  >>  ~/.ssh/authorized_keys"
+	ssh-keygen -t rsa
+	cat ~/.ssh/id_rsa.pub  >>  ~/.ssh/authorized_keys"
 ##add lines to prevenet ssh prompting cofirmation of the key
-mkdir /etc/ansible
-vi /etc/ansible/ansible.cfg
-[defaults]
-host_key_checking = False
+	mkdir /etc/ansible
+	vi /etc/ansible/ansible.cfg
+	[defaults]
+	host_key_checking = False
 ##create inventory file and add hosts
-vi /etc/ansible/hosts
+	vi /etc/ansible/hosts
 ##example for local host
-[local_host]
-127.0.0.1
+	[local_host]
+	127.0.0.1
 ##run check for ansible
-ansible local_host -m ping
+	ansible local_host -m ping
