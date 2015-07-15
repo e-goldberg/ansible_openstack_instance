@@ -3,7 +3,7 @@ Simple Ansible playbook to create new instance on an OpenStack cloud
 Uses os_server module from Ansible 2
 
 #Ansible installation and setup on Centos7 virtual instance brought up from kvm image on OpenStack
-install packages
+##install packages
   easy_install pip
   pip install jinja2
   pip install six --upgrade
