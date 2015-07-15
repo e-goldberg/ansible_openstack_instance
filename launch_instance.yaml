@@ -1,0 +1,7 @@
+---
+# launch instance from generic Centos7 image and give it a key
+
+- hosts: localhost
+  user: root
+  roles:
+    - launch_instances

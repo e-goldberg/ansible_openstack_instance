@@ -1,0 +1,10 @@
+OS_USERNAME: ansible
+OS_PASSWORD: ansible
+OS_TENANT_NAME: ansible
+OS_AUTH_URL: http://10.10.0.10:5000/v2.0
+OSIMG: CentOS-7-x86_64-GenericCloud
+NETWORK: 1446ba1c-341c-4633-84ba-ac0787d162a2
+FLAVOR: m1.small
+SECURITY_GROUP: default
+INST_NAME: appserver
+KEY_NAME: server_key

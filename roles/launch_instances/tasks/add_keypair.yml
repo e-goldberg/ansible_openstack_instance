@@ -1,0 +1,16 @@
+---
+
+# add keypair to keystone
+
+- name: add keypair {{ KEY_NAME }} for {{ INST_NAME }} to openstack
+  nova_keypair: state=present login_username={{ OS_USERNAME }} login_password={{ OS_PASSWORD }} login_tenant_name={{ OS_TENANT_NAME }} auth_url={{ OS_AUTH_URL }} name={{ KEY_NAME }}
+  register: key
+
+- debug: var=key.key
+
+- name: write pem file
+  local_action: copy content={{ key.key }} dest=/root/{{ KEY_NAME }}.pem
+
+- name: change file permissions to 600
+  command: chmod 600 /root/{{ KEY_NAME }}.pem
+

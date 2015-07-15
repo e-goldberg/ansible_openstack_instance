@@ -1,0 +1,29 @@
+---
+# launch server instance 
+
+- name: if file pem exists do not add keypair. check stat. if doesn't exist add key and create pem file
+  stat: path=/root/{{ KEY_NAME }}.pem
+  register: stat_key
+
+- include: add_keypair.yml
+  when: not stat_key.stat.exists
+
+- name: launch an instance
+  os_server:
+      state: present
+      auth: 
+        auth_url: "{{ OS_AUTH_URL }}" 
+        username: "{{ OS_USERNAME }}" 
+        password: "{{ OS_PASSWORD }}" 
+        project_name: "{{ OS_TENANT_NAME }}"
+      name: "{{ INST_NAME }}"
+      image: "{{ OSIMG }}"
+      flavor: "{{ FLAVOR }}"
+      auto_floating_ip: no
+      key_name: "{{ KEY_NAME }}"
+      security_groups: default
+      nics:
+        - net-id: "{{ NETWORK }}"
+  register: output
+
+- debug: var=output
